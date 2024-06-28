@@ -1,0 +1,29 @@
+import requests
+#if temp is 70 degrees or higher I wear shorts if it is lower then 70 degrees I wear pants.
+def get_weather(api_key,city,country):
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={city},{country}&appid={api_key}&units=metric'
+    response = requests.get(url)
+    data = response.json()
+    if response.status_code == 200:
+        return data['main']['temp']
+    else:
+        print("go for the safe option, wear shorts and pants.")
+
+        return None
+def main():
+    api_key = '7b46887c4cdb6c0fc2c8f88e694f7023'
+    city = 'Brookline'
+    country = 'US'
+    temperature = get_weather(api_key, city, country)
+    if temperature is not None:
+        print(f"The current temperature in {city} is {temperature}°C.")
+
+        if temperature >= 21.1:
+            print("Its warm. Wear shorts today.")
+        else:
+            print("Its a bit chilly. Wear pants today.")
+    else:
+        print("go for the safe option wear shorts and pants over them")
+
+if __name__ == "__main__":
+    main()
