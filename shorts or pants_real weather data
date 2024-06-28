@@ -8,7 +8,7 @@ def get_weather(api_key,city,country):
         return data['main']['temp']
     else:
         print("go for the safe option, wear shorts and pants.")
-
+ 
         return None
 def main():
     api_key = '7b46887c4cdb6c0fc2c8f88e694f7023'
